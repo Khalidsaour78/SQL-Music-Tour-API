@@ -25,5 +25,18 @@ events.get("/:id", async (req, res) => {
   }
 });
 
+// CREATE AN EVENT
+events.post("/", async (req, res) => {
+  try {
+    const newEvent = await Event.create(req.body);
+    res.status(200).json({
+      message: "Successfully inserted a new Event",
+      data: newEvent,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // EXPORT
 module.exports = events;
