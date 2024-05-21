@@ -21,7 +21,8 @@ module.exports = {
      * Add reverting commands here.
      *
      * Example:
-     * await queryInterface.dropTable('users');
+     * await queryInterface.removeColumn('bands','recommendation');
      */
+    await queryInterface.removeColumn("bands", "recommendation");
   },
 };
