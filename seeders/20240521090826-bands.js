@@ -12,6 +12,23 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+    await queryInterface.bulkInsert('stages', [
+      {
+        name: 'Stage One'
+      },
+      {
+        name: 'Stage Two'
+      },
+      {
+        name: 'Stage Three'
+      },
+      {
+        name: 'Stage Four'
+      },
+      {
+        name: 'Stage Five'
+      },
+    ]
   },
 
   async down (queryInterface, Sequelize) {
