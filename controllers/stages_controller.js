@@ -47,7 +47,7 @@ stages.put("/:id", async (req, res) => {
       },
     });
     res.status(200).json({
-      message: `Succesfully updated ${updatedStages} stage(s)`,
+      message: `Successfully updated ${updatedStages} stage(s)`,
     });
   } catch (error) {
     res.status(500).json(error);

@@ -38,5 +38,36 @@ events.post("/", async (req, res) => {
   }
 });
 
+// UPDATE AN EVENT
+events.put("/:id", async (req, res) => {
+  try {
+    const updatedEvent = await Event.update(req.body, {
+      where: {
+        event_id: req.params.id,
+      },
+    });
+    res.status(200).json({
+      message: `Successfully updated ${updatedEvent} event(s)`,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//Delete event
+events.delete("/:id", async (req, res) => {
+  try {
+    const deletedEvent = await Event.destroy({
+      where: {
+        event_id: req.params.id,
+      },
+    });
+    res.status(200).json({
+      message: `Successfully deleted ${deletedEvent} event(s)`,
+    });
+  } catch (error) {
+    res.status(200).json(error);
+  }
+});
 // EXPORT
 module.exports = events;
