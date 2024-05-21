@@ -38,5 +38,37 @@ stages.post("/", async (req, res) => {
   }
 });
 
+//Update stage
+stages.put("/:id", async (req, res) => {
+  try {
+    const updatedStages = await Stage.update(req.body, {
+      where: {
+        stage_id: req.params.id,
+      },
+    });
+    res.status(200).json({
+      message: `Succesfully updated ${updatedStages} stage(s)`,
+    });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+//Delete stage
+stages.delete("/:id", async (req, res) => {
+  try {
+    const deletedStage = await Stage.destroy({
+      where: {
+        stage_id: req.params.id,
+      },
+    });
+    res.status(200).json({
+      message: `Successfully deleted ${deletedStage} stage(s)`,
+    });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 // EXPORT
 module.exports = stages;
